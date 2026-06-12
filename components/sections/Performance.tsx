@@ -65,8 +65,8 @@ export default function Performance() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <SectionShell id="performans" className="py-28">
-      <div className="mx-auto max-w-[1100px] px-6">
+    <SectionShell id="performans" className="section-py">
+      <div className="section-wrap">
         <SectionHead
           eyebrow="Test Verileri"
           title="Rakamlar, pazarlama değildir."
@@ -86,10 +86,10 @@ export default function Performance() {
                   delay: i * 0.15,
                 }}
               >
-                <div className="mb-2.5 flex items-baseline justify-between">
-                  <h4 className="font-display text-base font-semibold">{r.title}</h4>
+                <div className="mb-2.5 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h4 className="font-display text-sm font-semibold leading-snug sm:text-base">{r.title}</h4>
                   <motion.span
-                    className="font-mono text-[13px] text-cyan"
+                    className="shrink-0 font-mono text-xs text-cyan sm:text-[13px]"
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: i * 0.15 + 0.9 }}

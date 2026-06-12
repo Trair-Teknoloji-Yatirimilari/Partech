@@ -10,6 +10,7 @@ import {
   useSpring,
   useMotionValue,
 } from "framer-motion";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import SectionHead from "@/components/ui/SectionHead";
 import Reveal from "@/components/ui/Reveal";
 import SectionShell from "@/components/ui/SectionShell";
@@ -26,6 +27,8 @@ const GUIDE_PATH =
 
 export default function Exploded() {
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
+  const spread = isMobile ? 0.42 : 1;
   const containerRef = useRef<HTMLDivElement>(null);
   const [manual, setManual] = useState<boolean | null>(null);
   const [scrollOpen, setScrollOpen] = useState(0);
@@ -49,10 +52,10 @@ export default function Exploded() {
     openMotion.set(targetOpen);
   }, [targetOpen, openMotion]);
 
-  const discX = useTransform(openSpring, (v) => v * -130);
-  const padOutX = useTransform(openSpring, (v) => v * 70);
-  const padInX = useTransform(openSpring, (v) => v * -30);
-  const caliperX = useTransform(openSpring, (v) => v * 170);
+  const discX = useTransform(openSpring, (v) => v * -130 * spread);
+  const padOutX = useTransform(openSpring, (v) => v * 70 * spread);
+  const padInX = useTransform(openSpring, (v) => v * -30 * spread);
+  const caliperX = useTransform(openSpring, (v) => v * 170 * spread);
   const strokeOffset = useTransform(openSpring, (v) => (1 - v) * 400);
   const labelOpacity = useTransform(openSpring, [0.4, 0.7], [0, 1]);
 
@@ -64,22 +67,22 @@ export default function Exploded() {
   };
 
   return (
-    <SectionShell id="sistem" className="py-28">
-      <div ref={containerRef} className="mx-auto max-w-[1100px] px-6">
+    <SectionShell id="sistem" className="section-py">
+      <div ref={containerRef} className="section-wrap">
         <SectionHead
           eyebrow="Sistem Mimarisi"
           title="Patlatılmış görünüm."
           lead="Disk, iç/dış balata ve kaliper — her parça tek bir tolerans hedefine göre eşleştirilir. Kaydırarak veya butonla sistemi açın."
         />
         <Reveal>
-          <div className="relative flex min-h-[480px] flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-line bg-panel px-5 pb-7 pt-10 md:min-h-[520px]">
-            <span className="absolute left-5 top-4 font-mono text-[11px] tracking-[0.16em] text-muted">
+          <div className="relative flex min-h-[320px] flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-line bg-panel px-3 pb-6 pt-12 sm:min-h-[420px] sm:px-5 sm:pb-7 sm:pt-10 md:min-h-[520px]">
+            <span className="absolute left-3 top-3 font-mono text-[9px] tracking-[0.12em] text-muted sm:left-5 sm:top-4 sm:text-[11px] sm:tracking-[0.16em]">
               PT-EX/01 — MONTAJ ŞEMASI
             </span>
             <svg
               width="100%"
               viewBox="0 0 760 340"
-              className="max-w-[760px]"
+              className="max-w-full sm:max-w-[760px]"
               role="img"
               aria-label="Fren sistemi patlatılmış görünüm"
             >
@@ -126,7 +129,7 @@ export default function Exploded() {
             </svg>
             <motion.div
               style={{ opacity: reduced ? 1 : labelOpacity }}
-              className="flex flex-wrap justify-center gap-6 font-mono text-xs text-muted"
+              className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-2 font-mono text-[10px] text-muted sm:gap-6 sm:text-xs"
             >
               {labels.map((l) => (
                 <span key={l.text} className="flex items-center gap-2">
@@ -143,7 +146,7 @@ export default function Exploded() {
               onClick={handleToggle}
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="mt-4 rounded border border-line px-5 py-2.5 font-mono text-[13px] transition-colors hover:border-blue"
+              className="mt-3 w-full max-w-xs rounded border border-line px-4 py-2.5 font-mono text-xs transition-colors hover:border-blue sm:mt-4 sm:w-auto sm:max-w-none sm:px-5 sm:text-[13px]"
             >
               Görünümü Aç / Kapat
             </motion.button>

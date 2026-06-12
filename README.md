@@ -2,42 +2,37 @@
 
 Next.js (App Router) + TypeScript + Tailwind CSS + Framer Motion + Lenis.
 
-## Kurulum
+**Canlı:** https://mektumu.com (geçici domain)
+
+## Kurulum (yerel)
 
 ```bash
 npm install
 npm run dev
 ```
 
-Tarayıcıda http://localhost:3000 adresini aç.
+Tarayıcıda http://localhost:3000
 
-## GitHub'a Push
+## Sunucu & Deploy
+
+Tüm sunucu bilgileri, SSH bağlantısı ve güncelleme adımları:
+
+→ **[DEPLOY.md](./DEPLOY.md)**
+
+## GitHub
 
 ```bash
-git init
-git add .
-git commit -m "Parstech ilk sürüm"
-git branch -M main
-git remote add origin https://github.com/Trair-Teknoloji-Yatirimilari/Partech.git
-git push -u origin main
+git remote -v
+# origin  https://github.com/Trair-Teknoloji-Yatirimilari/Partech.git
 ```
-
-## Canlıya Alma (Vercel)
-
-1. vercel.com → GitHub ile giriş yap
-2. Add New → Project → bu repoyu seç → Deploy
-3. Her `git push` sonrası site otomatik güncellenir
 
 ## Yapı
 
-- `app/` — layout (fontlar, metadata) ve ana sayfa
+- `app/` — layout, metadata, ana sayfa
 - `components/sections/` — Navbar, Hero, Layers, HeatSim, Exploded, Performance, Contact, Footer
-- `components/ui/` — Reveal (scroll animasyonu), SectionHead
-- `components/SmoothScroll.tsx` — Lenis pürüzsüz kaydırma
-- `CLAUDE.md` — Claude Code için proje talimatları (tasarım dili, kurallar)
-- `parstech-demo.html` — orijinal vanilla prototip (referans)
-
-## Claude Code ile Geliştirme
-
-Proje klasöründe terminali aç, `claude` yaz ve geliştirmek istediğin bölümü söyle.
-CLAUDE.md otomatik okunur; tasarım kuralları oradadır.
+- `components/ui/` — Reveal, SectionHead, MobileBottomNav, ScrollProgress, …
+- `components/providers/LenisProvider.tsx` — smooth scroll + anchor
+- `deploy/` — nginx config şablonu
+- `ecosystem.config.js` — PM2 config (port 3080)
+- `CLAUDE.md` — proje talimatları
+- `parstech-demo.html` — vanilla prototip referans

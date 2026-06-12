@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, Inter, IBM_Plex_Mono } from "next/font/google";
 import LenisProvider from "@/components/providers/LenisProvider";
 import BackgroundGrid from "@/components/ui/BackgroundGrid";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import SectionNav from "@/components/ui/SectionNav";
+import MobileBottomNav from "@/components/ui/MobileBottomNav";
 import "./globals.css";
 
 const display = Chakra_Petch({
@@ -21,6 +22,12 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   title: "Parstech — Yüksek Performanslı Fren Balata Sistemleri",
   description:
@@ -33,12 +40,13 @@ export default function RootLayout({
   return (
     <html lang="tr" className="scroll-smooth">
       <body
-        className={`${display.variable} ${body.variable} ${mono.variable} relative bg-bg font-body text-ink antialiased`}
+        className={`${display.variable} ${body.variable} ${mono.variable} relative bg-bg pb-[4.5rem] font-body text-ink antialiased md:pb-0`}
       >
         <LenisProvider>
           <BackgroundGrid />
           <ScrollProgress />
           <SectionNav />
+          <MobileBottomNav />
           {children}
         </LenisProvider>
       </body>

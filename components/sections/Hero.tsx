@@ -43,7 +43,7 @@ function SpecCounter({
 
   return (
     <div ref={ref}>
-      <b className="block font-display text-2xl font-semibold">
+      <b className="block font-display text-xl font-semibold sm:text-2xl">
         {prefix}
         {decimals > 0 ? count.toFixed(decimals) : Math.round(count)}
         {suffix}
@@ -74,7 +74,7 @@ export default function Hero() {
     <header
       ref={heroRef}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-36"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 md:pt-36"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -84,7 +84,7 @@ export default function Hero() {
             "radial-gradient(ellipse 60% 50% at 75% 40%, rgba(45,127,249,.12), transparent 70%)",
         }}
       />
-      <div className="mx-auto grid w-full max-w-[1100px] items-center gap-12 px-6 md:grid-cols-[1.05fr_.95fr]">
+      <div className="section-wrap grid w-full items-center gap-8 sm:gap-12 md:grid-cols-[1.05fr_.95fr]">
         <motion.div
           style={{ y: textY, opacity: textOpacity }}
           variants={container}
@@ -96,23 +96,23 @@ export default function Hero() {
           </motion.div>
           <motion.h1
             variants={item}
-            className="mb-5 font-display text-[38px] font-bold leading-[1.08] md:text-[62px]"
+            className="mb-5 font-display text-[clamp(2rem,8vw,3.875rem)] font-bold leading-[1.08]"
           >
             Duruş gücü,
             <br />
             <span className="text-blue">mühendislikle</span> ölçülür.
           </motion.h1>
-          <motion.p variants={item} className="mb-9 max-w-md text-[17px] text-muted">
+          <motion.p variants={item} className="mb-7 max-w-md text-base text-muted sm:mb-9 sm:text-[17px]">
             Parstech balataları; yüksek ısı direnci, sessiz çalışma ve tutarlı
             sürtünme katsayısı için katman katman tasarlanır. Yolda değil,
             laboratuvarda kanıtlanır.
           </motion.p>
-          <motion.div variants={item} className="flex flex-wrap gap-3.5">
+          <motion.div variants={item} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
             <motion.a
               href="#sistem"
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="rounded-md bg-blue px-6 py-3.5 font-mono text-sm font-medium text-white transition-colors hover:bg-cyan hover:text-bg"
+              className="rounded-md bg-blue px-6 py-3.5 text-center font-mono text-sm font-medium text-white transition-colors hover:bg-cyan hover:text-bg"
             >
               Sistemi İncele
             </motion.a>
@@ -120,15 +120,15 @@ export default function Hero() {
               href="#iletisim"
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="rounded-md border border-line px-6 py-3.5 font-mono text-sm transition-colors hover:border-blue"
+              className="rounded-md border border-line px-6 py-3.5 text-center font-mono text-sm transition-colors hover:border-blue"
             >
               Bayilik &amp; Teklif
             </motion.a>
           </motion.div>
-          <motion.div variants={item} className="mt-12 flex flex-wrap gap-8">
+          <motion.div variants={item} className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:mt-12 sm:flex sm:flex-wrap sm:gap-8">
             <SpecCounter value={650} suffix="°C" label="Isı Direnci" />
             <SpecCounter value={0.42} prefix="μ " label="Sürtünme Katsayısı" decimals={2} />
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <b className="block font-display text-2xl font-semibold">ECE R90</b>
               <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
                 Sertifikasyon
@@ -142,7 +142,7 @@ export default function Hero() {
           initial={reduced ? false : { opacity: 0, scale: 0.92, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.35 }}
-          className="flex justify-center"
+          className="flex justify-center px-2 sm:px-0"
         >
           <BrakeDisc reduced={!!reduced} />
         </motion.div>
@@ -156,7 +156,7 @@ function BrakeDisc({ reduced }: { reduced: boolean }) {
     <svg
       width="100%"
       viewBox="0 0 520 520"
-      className="max-w-[440px]"
+      className="max-w-[min(100%,280px)] sm:max-w-[440px]"
       role="img"
       aria-label="Parstech fren diski ve kaliper çizimi"
     >

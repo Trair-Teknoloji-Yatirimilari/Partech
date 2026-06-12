@@ -12,7 +12,25 @@
   outline-offset: 2px;
 }
 
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 @layer components {
+  .section-wrap {
+    @apply mx-auto max-w-[1100px] px-4 sm:px-6;
+  }
+
+  .section-py {
+    @apply py-16 sm:py-20 md:py-28;
+  }
   .eyebrow {
     @apply mb-4 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.18em] text-cyan;
   }

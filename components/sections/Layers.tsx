@@ -41,12 +41,12 @@ export default function Layers() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <SectionShell id="katman" className="py-28">
-      <div className="mx-auto max-w-[1100px] px-6">
+    <SectionShell id="katman" className="section-py">
+      <div className="section-wrap">
         <SectionHead
           eyebrow="Katman Teknolojisi"
           title="Dört katman, tek görev: kontrollü duruş."
-          lead="Her Parstech balatası, görevine göre formüle edilmiş dört fonksiyonel katmandan oluşur. Kartların üzerine gelin."
+          lead="Her Parstech balatası, görevine göre formüle edilmiş dört fonksiyonel katmandan oluşur. Dokunarak veya üzerine gelerek detayları görün."
         />
         <Reveal>
           <LayoutGroup>
@@ -62,9 +62,13 @@ export default function Layers() {
                     onHoverEnd={() => setExpanded(null)}
                     onFocus={() => setExpanded(l.num)}
                     onBlur={() => setExpanded(null)}
+                    onClick={() =>
+                      setExpanded((prev) => (prev === l.num ? null : l.num))
+                    }
                     whileHover={{ y: -8, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="group relative cursor-default overflow-hidden rounded-lg border border-line bg-panel p-6 transition-colors hover:bg-steel focus-within:bg-steel"
+                    className="group relative cursor-pointer overflow-hidden rounded-lg border border-line bg-panel p-5 transition-colors hover:bg-steel focus-within:bg-steel sm:cursor-default sm:p-6"
                     style={{ borderTopColor: l.color, borderTopWidth: 3 }}
                   >
                     <span className="font-mono text-[11px] tracking-[0.14em] text-muted">

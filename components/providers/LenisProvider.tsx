@@ -73,7 +73,8 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
       const el = document.querySelector(href);
       if (!el) return;
       e.preventDefault();
-      instance.scrollTo(el as HTMLElement, { offset: -80, duration: 1.2 });
+      const offset = window.innerWidth < 768 ? -56 : -80;
+      instance.scrollTo(el as HTMLElement, { offset, duration: 1.2 });
     };
 
     document.addEventListener("click", handleClick);

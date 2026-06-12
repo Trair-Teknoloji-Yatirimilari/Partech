@@ -106,11 +106,11 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <SectionShell id="iletisim" className="border-t border-line bg-panel py-28">
-      <div className="mx-auto max-w-[1100px] px-6">
+    <SectionShell id="iletisim" className="section-py border-t border-line bg-panel">
+      <div className="section-wrap">
         <SectionHead eyebrow="İletişim" title="Bayilik ve OEM teklifi alın." />
         <Reveal>
-          <div className="mt-9 grid gap-12 md:grid-cols-2">
+          <div className="mt-6 grid gap-10 sm:mt-9 sm:gap-12 md:grid-cols-2">
             <div>
               <AnimatePresence mode="wait">
                 {sent ? (
@@ -138,7 +138,7 @@ export default function Contact() {
                       onClick={() => setSent(true)}
                       whileHover={{ y: -8 }}
                       transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                      className="rounded-md bg-blue px-6 py-3.5 font-mono text-sm font-medium text-white transition-colors hover:bg-cyan hover:text-bg"
+                      className="w-full rounded-md bg-blue px-6 py-3.5 font-mono text-sm font-medium text-white transition-colors hover:bg-cyan hover:text-bg sm:w-auto"
                     >
                       Gönder
                     </motion.button>
@@ -151,10 +151,19 @@ export default function Contact() {
                 Distribütörlük, filo anlaşmaları ve OEM eşleştirme talepleriniz
                 için teknik ekibimiz 24 saat içinde dönüş yapar.
               </p>
-              <div className="space-y-2.5 font-mono text-[13px]">
-                <div><span className="inline-block w-[70px] text-muted">TEL</span> +90 (212) 000 00 00</div>
-                <div><span className="inline-block w-[70px] text-muted">E-POSTA</span> info@parstech.com.tr</div>
-                <div><span className="inline-block w-[70px] text-muted">ADRES</span> OSB Mah. Sanayi Cad. No:1, İstanbul</div>
+              <div className="space-y-3 font-mono text-[13px]">
+                <div className="flex flex-col gap-0.5 sm:flex-row">
+                  <span className="shrink-0 text-muted sm:w-[70px]">TEL</span>
+                  <span>+90 (212) 000 00 00</span>
+                </div>
+                <div className="flex flex-col gap-0.5 sm:flex-row">
+                  <span className="shrink-0 text-muted sm:w-[70px]">E-POSTA</span>
+                  <span className="break-all">info@parstech.com.tr</span>
+                </div>
+                <div className="flex flex-col gap-0.5 sm:flex-row">
+                  <span className="shrink-0 text-muted sm:w-[70px]">ADRES</span>
+                  <span>OSB Mah. Sanayi Cad. No:1, İstanbul</span>
+                </div>
               </div>
             </div>
           </div>

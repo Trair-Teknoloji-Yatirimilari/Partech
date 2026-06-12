@@ -75,8 +75,8 @@ export default function HeatSim() {
           };
 
   return (
-    <SectionShell id="isi" className="border-y border-line bg-panel py-28" shimmer>
-      <div className="mx-auto grid max-w-[1100px] items-center gap-14 px-6 md:grid-cols-2">
+    <SectionShell id="isi" className="section-py border-y border-line bg-panel" shimmer>
+      <div className="section-wrap grid items-center gap-10 sm:gap-14 md:grid-cols-2">
         <div>
           <SectionHead
             eyebrow="Isı Yönetimi"
@@ -103,7 +103,7 @@ export default function HeatSim() {
               <svg
                 width="100%"
                 viewBox="0 0 320 320"
-                className="max-w-[300px]"
+                className="max-w-[min(100%,260px)] sm:max-w-[300px]"
                 role="img"
                 aria-label="Isı simülasyonu diski"
               >
@@ -162,16 +162,16 @@ export default function HeatSim() {
                 />
               </svg>
             </motion.div>
-            <div className="flex items-center gap-5 font-mono text-[15px] text-muted">
+            <div className="flex flex-col items-center gap-1 text-center font-mono text-sm text-muted sm:flex-row sm:gap-5 sm:text-[15px]">
               <motion.b
                 key={temp}
                 initial={{ opacity: 0.6, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-display text-3xl font-medium text-ink"
+                className="font-display text-4xl font-medium text-ink sm:text-3xl"
               >
                 {temp}
               </motion.b>
-              <span>°C / yüzey sıcaklığı</span>
+              <span className="max-w-[12rem] sm:max-w-none">°C / yüzey sıcaklığı</span>
             </div>
             <motion.button
               type="button"
@@ -194,7 +194,7 @@ export default function HeatSim() {
               }
               whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="select-none touch-none rounded-md border px-8 py-4 font-mono text-sm font-medium tracking-wide"
+              className="w-full max-w-xs select-none touch-none rounded-md border px-6 py-4 font-mono text-sm font-medium tracking-wide sm:w-auto sm:px-8"
             >
               ▼ FRENİ UYGULA
             </motion.button>
@@ -204,7 +204,7 @@ export default function HeatSim() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
-                className="font-mono text-xs"
+                className="px-2 text-center font-mono text-xs sm:text-left"
                 style={{ color: note.color }}
               >
                 {note.text}
