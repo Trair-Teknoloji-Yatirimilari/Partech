@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  background: #2d7ff9;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+@layer components {
+  .eyebrow {
+    @apply mb-4 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.18em] text-cyan;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-7 bg-cyan;
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(48px, 48px);
+  }
+}
+
+.animate-grid-drift {
+  animation: grid-drift 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-grid-drift {
+    animation: none;
+  }
+}

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parstech — Yüksek Performanslı Fren Balata Sistemleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0F14;
+  --panel:#11161D;
+  --steel:#1B232E;
+  --line:#243040;
+  --blue:#2D7FF9;
+  --cyan:#38BDF8;
+  --heat:#F43F5E;
+  --text:#E8EDF4;
+  --muted:#8A97A8;
+  --display:'Chakra Petch',sans-serif;
+  --body:'Inter',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--cyan)}
+h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:600;line-height:1.15;margin-bottom:14px}
+.lead{color:var(--muted);max-width:560px;margin-bottom:48px}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,15,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.04em;text-decoration:none;color:var(--text)}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .25s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--text)}
+.nav-cta{font-family:var(--mono);font-size:13px;color:var(--bg)!important;background:var(--blue);padding:8px 16px;border-radius:4px;font-weight:500;transition:background .25s}
+.nav-cta:hover{background:var(--cyan)}
+@media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 75% 40%,rgba(45,127,249,.12),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-family:var(--display);font-size:clamp(38px,5.5vw,62px);font-weight:700;line-height:1.08;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:14px;font-weight:500;text-decoration:none;padding:14px 26px;border-radius:5px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .25s,border-color .25s;display:inline-block}
+.btn:hover{transform:translateY(-3px)}
+.btn-fill{background:var(--blue);color:#fff}
+.btn-fill:hover{background:var(--cyan);color:var(--bg)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--blue)}
+.hero-specs{display:flex;gap:34px;margin-top:54px;flex-wrap:wrap}
+.spec b{font-family:var(--display);font-size:26px;font-weight:600;color:var(--text);display:block}
+.spec span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* hero stagger entrance */
+.st{opacity:0;transform:translateY(-26px);animation:dropIn .9s cubic-bezier(.22,1.2,.36,1) forwards}
+.st1{animation-delay:.1s}.st2{animation-delay:.25s}.st3{animation-delay:.4s}.st4{animation-delay:.55s}.st5{animation-delay:.7s}
+@keyframes dropIn{to{opacity:1;transform:translateY(0)}}
+.hero-visual{opacity:0;transform:scale(.92) translateY(20px);animation:visIn 1.1s cubic-bezier(.22,1.2,.36,1) .35s forwards;display:flex;justify-content:center}
+@keyframes visIn{to{opacity:1;transform:scale(1) translateY(0)}}
+.disc-spin{animation:spin 24s linear infinite;transform-origin:260px 260px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- LAYER CARDS ---------- */
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:880px){.layers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.layers{grid-template-columns:1fr}}
+.layer{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px 22px;cursor:default;transition:transform .45s cubic-bezier(.34,1.45,.64,1),border-color .3s,background .3s;position:relative;overflow:hidden}
+.layer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--lc,var(--blue));opacity:.85}
+.layer:hover{transform:translateY(-8px) scale(1.02);border-color:var(--lc,var(--blue));background:var(--steel)}
+.layer .num{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em}
+.layer h3{font-family:var(--display);font-size:18px;font-weight:600;margin:10px 0 8px}
+.layer p{font-size:13.5px;color:var(--muted);max-height:0;opacity:0;transition:max-height .5s cubic-bezier(.22,1,.36,1),opacity .4s .08s}
+.layer:hover p,.layer:focus-within p{max-height:120px;opacity:1}
+.layer .tag{font-family:var(--mono);font-size:11px;color:var(--lc,var(--blue));margin-top:6px;display:block}
+
+/* ---------- HEAT SIM ---------- */
+.heat-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:880px){.heat-grid{grid-template-columns:1fr}}
+.heat-stage{display:flex;flex-direction:column;align-items:center;gap:26px}
+.heat-readout{font-family:var(--mono);font-size:15px;color:var(--muted);display:flex;gap:20px;align-items:center}
+.heat-readout b{font-size:30px;font-weight:500;color:var(--text);font-family:var(--display)}
+.brake-btn{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.06em;background:var(--steel);color:var(--text);border:1px solid var(--line);padding:16px 34px;border-radius:6px;cursor:pointer;transition:all .25s;user-select:none;-webkit-user-select:none;touch-action:none}
+.brake-btn:hover{border-color:var(--heat)}
+.brake-btn.active{background:var(--heat);border-color:var(--heat);color:#fff;transform:scale(.97)}
+.heat-note{font-family:var(--mono);font-size:12px;color:var(--muted)}
+#heatDisc{--h:0}
+.heat-glow{transition:opacity .15s linear}
+
+/* ---------- EXPLODED VIEW ---------- */
+.exploded-stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:40px 20px 28px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;overflow:hidden}
+.exploded-stage::after{content:"PT-EX/01 — MONTAJ ŞEMASI";position:absolute;top:16px;left:20px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.ex-part{transition:transform 1.1s cubic-bezier(.22,1.15,.36,1)}
+.exploded .ex-disc{transform:translateX(-130px)}
+.exploded .ex-pad-in{transform:translateX(-30px)}
+.exploded .ex-pad-out{transform:translateX(70px)}
+.exploded .ex-caliper{transform:translateX(170px)}
+.ex-labels{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--muted);opacity:0;transition:opacity .6s .5s}
+.exploded ~ .ex-labels, .exploded .ex-labels{opacity:1}
+.ex-labels span::before{content:"●";margin-right:7px;font-size:9px}
+.ex-l1::before{color:#9FB2C8}.ex-l2::before{color:var(--blue)}.ex-l3::before{color:var(--cyan)}.ex-l4::before{color:#5A6B80}
+.ex-toggle{margin-top:18px;font-family:var(--mono);font-size:13px;background:none;border:1px solid var(--line);color:var(--text);padding:10px 22px;border-radius:5px;cursor:pointer;transition:border-color .25s}
+.ex-toggle:hover{border-color:var(--blue)}
+
+/* ---------- PERFORMANCE ---------- */
+.perf{display:flex;flex-direction:column;gap:34px;max-width:760px}
+.perf-row .perf-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.perf-row h4{font-family:var(--display);font-size:16px;font-weight:600}
+.perf-row .val{font-family:var(--mono);font-size:13px;color:var(--cyan)}
+.bars{display:flex;flex-direction:column;gap:7px}
+.bar{height:14px;border-radius:3px;background:var(--steel);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0;width:0;border-radius:3px;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.bar.pars i{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.bar.std i{background:#3A4656}
+.bar-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;margin-bottom:3px}
+.inview .bar i{width:var(--w)}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.inview{opacity:1;transform:translateY(0)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--panel);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.field{margin-bottom:18px}
+.field label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
+.field input,.field textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:13px 14px;color:var(--text);font-family:var(--body);font-size:14px;transition:border-color .25s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.contact-info p{color:var(--muted);font-size:14px;margin-bottom:22px}
+.contact-info .ci{font-family:var(--mono);font-size:13px;color:var(--text);margin-bottom:10px}
+.contact-info .ci span{color:var(--muted);display:inline-block;width:70px}
+footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .st,.hero-visual,.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#top">PARS<span>TECH</span></a>
+    <div class="nav-links">
+      <a href="#katman">Katman Teknolojisi</a>
+      <a href="#isi">Isı Yönetimi</a>
+      <a href="#sistem">Sistem</a>
+      <a href="#performans">Performans</a>
+      <a class="nav-cta" href="#iletisim">Teklif Al</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow st st1">Fren Balata Sistemleri</div>
+      <h1 class="st st2">Duruş gücü,<br><em>mühendislikle</em> ölçülür.</h1>
+      <p class="st st3">Parstech balataları; yüksek ısı direnci, sessiz çalışma ve tutarlı sürtünme katsayısı için katman katman tasarlanır. Yolda değil, laboratuvarda kanıtlanır.</p>
+      <div class="hero-ctas st st4">
+        <a class="btn btn-fill" href="#sistem">Sistemi İncele</a>
+        <a class="btn btn-ghost" href="#iletisim">Bayilik &amp; Teklif</a>
+      </div>
+      <div class="hero-specs st st5">
+        <div class="spec"><b>650°C</b><span>Isı Direnci</span></div>
+        <div class="spec"><b>μ 0.42</b><span>Sürtünme Katsayısı</span></div>
+        <div class="spec"><b>ECE R90</b><span>Sertifikasyon</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg width="100%" viewBox="0 0 520 520" style="max-width:440px" aria-label="Parstech fren diski ve kaliper çizimi" role="img">
+        <defs>
+          <radialGradient id="discFace" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#2A3442"/>
+            <stop offset="70%" stop-color="#1B232E"/>
+            <stop offset="100%" stop-color="#131A22"/>
+          </radialGradient>
+          <linearGradient id="calGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2D7FF9"/>
+            <stop offset="100%" stop-color="#1D5FC4"/>
+          </linearGradient>
+        </defs>
+        <g class="disc-spin">
+          <circle cx="260" cy="260" r="200" fill="url(#discFace)" stroke="#2B3848" stroke-width="2"/>
+          <circle cx="260" cy="260" r="150" fill="none" stroke="#2B3848" stroke-width="1.5" stroke-dasharray="4 8"/>
+          <g fill="#0B0F14">
+            <circle cx="260" cy="85" r="7"/><circle cx="412" cy="172" r="7"/><circle cx="412" cy="348" r="7"/>
+            <circle cx="260" cy="435" r="7"/><circle cx="108" cy="348" r="7"/><circle cx="108" cy="172" r="7"/>
+          </g>
+          <g stroke="#0E141B" stroke-width="3">
+            <line x1="260" y1="130" x2="260" y2="190"/><line x1="372" y1="195" x2="322" y2="225"/>
+            <line x1="372" y1="325" x2="322" y2="295"/><line x1="260" y1="390" x2="260" y2="330"/>
+            <line x1="148" y1="325" x2="198" y2="295"/><line x1="148" y1="195" x2="198" y2="225"/>
+          </g>
+          <circle cx="260" cy="260" r="70" fill="#10161E" stroke="#2B3848" stroke-width="2"/>
+          <circle cx="260" cy="260" r="16" fill="#2D7FF9"/>
+        </g>
+        <g>
+          <path d="M150 60 A 215 215 0 0 1 370 60 L 352 118 A 158 158 0 0 0 168 118 Z" fill="url(#calGrad)" stroke="#1A4D9E" stroke-width="2"/>
+          <text x="260" y="92" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="22" fill="#fff" letter-spacing="2">PARSTECH</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ================= LAYERS ================= -->
+<section id="katman">
+  <div class="wrap">
+    <div class="eyebrow reveal">Katman Teknolojisi</div>
+    <h2 class="reveal">Dört katman, tek görev: kontrollü duruş.</h2>
+    <p class="lead reveal">Her Parstech balatası, görevine göre formüle edilmiş dört fonksiyonel katmandan oluşur. Kartların üzerine gelin.</p>
+    <div class="layers reveal">
+      <div class="layer" style="--lc:#38BDF8" tabindex="0">
+        <span class="num">K-01</span>
+        <h3>Sürtünme Yüzeyi</h3>
+        <p>Seramik takviyeli organik karışım; ıslak ve kuru zeminde tutarlı μ değeri, minimum disk aşınması.</p>
+        <span class="tag">Seramik kompozit</span>
+      </div>
+      <div class="layer" style="--lc:#2D7FF9" tabindex="0">
+        <span class="num">K-02</span>
+        <h3>Geçiş Tabakası</h3>
+        <p>Sürtünme yüzeyini taşıyıcıya kademeli bağlar; ani frenlemede katman ayrılmasını engeller.</p>
+        <span class="tag">Termoset bağ</span>
+      </div>
+      <div class="layer" style="--lc:#7C9CC4" tabindex="0">
+        <span class="num">K-03</span>
+        <h3>İzolasyon Tabakası</h3>
+        <p>Isının kalipere ve hidrolik sisteme geçişini sınırlar; fren hissini sıcakta bile korur.</p>
+        <span class="tag">Termal bariyer</span>
+      </div>
+      <div class="layer" style="--lc:#5A6B80" tabindex="0">
+        <span class="num">K-04</span>
+        <h3>Çelik Taşıyıcı + Shim</h3>
+        <p>Hassas işlenmiş çelik plaka ve titreşim sönümleyici shim; gıcırtısız, sessiz çalışma.</p>
+        <span class="tag">NVH kontrolü</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEAT SIM ================= -->
+<section id="isi" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap heat-grid">
+    <div>
+      <div class="eyebrow reveal">Isı Yönetimi</div>
+      <h2 class="reveal">Frenleme anını canlı izleyin.</h2>
+      <p class="lead reveal" style="margin-bottom:24px">Frenleme sırasında kinetik enerji ısıya dönüşür. Parstech formülasyonu 650°C'ye kadar sürtünme katsayısını korur ve "fading" (fren zayıflaması) etkisini geciktirir.</p>
+      <p class="reveal" style="color:var(--muted);font-size:14px">Butona <b style="color:var(--text)">basılı tutun</b> — disk ısınsın. Bırakın — havalandırma kanalları soğutsun.</p>
+    </div>
+    <div class="heat-stage reveal">
+      <svg id="heatDisc" width="100%" viewBox="0 0 320 320" style="max-width:300px" aria-label="Isı simülasyonu diski" role="img">
+        <defs>
+          <radialGradient id="coldG" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stop-color="#1E2936"/><stop offset="100%" stop-color="#141B24"/>
+          </radialGradient>
+          <radialGradient id="hotG" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#FACC15"/><stop offset="45%" stop-color="#F43F5E"/><stop offset="100%" stop-color="#7F1D3A"/>
+          </radialGradient>
+        </defs>
+        <circle cx="160" cy="160" r="130" fill="url(#coldG)" stroke="#2B3848" stroke-width="2"/>
+        <circle class="heat-glow" id="heatLayer" cx="160" cy="160" r="130" fill="url(#hotG)" opacity="0"/>
+        <circle cx="160" cy="160" r="92" fill="none" stroke="#0B0F14" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <circle cx="160" cy="160" r="44" fill="#10161E" stroke="#2B3848" stroke-width="2"/>
+        <circle cx="160" cy="160" r="10" fill="#2D7FF9"/>
+      </svg>
+      <div class="heat-readout"><b id="tempVal">38</b><span>°C / yüzey sıcaklığı</span></div>
+      <button class="brake-btn" id="brakeBtn" aria-label="Fren simülasyonu: basılı tutun">▼ FRENİ UYGULA</button>
+      <span class="heat-note" id="heatNote">Sistem soğuk · μ stabil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPLODED VIEW ================= -->
+<section id="sistem">
+  <div class="wrap">
+    <div class="eyebrow reveal">Sistem Mimarisi</div>
+    <h2 class="reveal">Patlatılmış görünüm.</h2>
+    <p class="lead reveal">Disk, iç/dış balata ve kaliper — her parça tek bir tolerans hedefine göre eşleştirilir. Aşağı kaydırdığınızda sistem kendini açar.</p>
+    <div class="exploded-stage reveal" id="exStage">
+      <svg width="100%" viewBox="0 0 760 340" style="max-width:760px" aria-label="Fren sistemi patlatılmış görünüm" role="img">
+        <!-- disc -->
+        <g class="ex-part ex-disc">
+          <ellipse cx="330" cy="170" rx="36" ry="130" fill="#222D3B" stroke="#3A4656" stroke-width="2"/>
+          <ellipse cx="322" cy="170" rx="36" ry="130" fill="#1B232E" stroke="#3A4656" stroke-width="2"/>
+          <ellipse cx="322" cy="170" rx="14" ry="52" fill="#10161E" stroke="#3A4656" stroke-width="1.5"/>
+        </g>
+        <!-- inner pad -->
+        <g class="ex-part ex-pad-in">
+          <rect x="385" y="92" width="20" height="156" rx="4" fill="#2D7FF9"/>
+          <rect x="405" y="92" width="9" height="156" rx="3" fill="#5A6B80"/>
+        </g>
+        <!-- outer pad -->
+        <g class="ex-part ex-pad-out">
+          <rect x="252" y="92" width="9" height="156" rx="3" fill="#5A6B80" transform="translate(-14 0)"/>
+          <rect x="261" y="92" width="20" height="156" rx="4" fill="#38BDF8" transform="translate(-14 0)"/>
+        </g>
+        <!-- caliper -->
+        <g class="ex-part ex-caliper">
+          <path d="M430 70 h70 q26 0 26 26 v148 q0 26 -26 26 h-70 v-34 h56 q8 0 8 -8 v-116 q0 -8 -8 -8 h-56 Z" fill="#2A3442" stroke="#3A4656" stroke-width="2"/>
+          <rect x="436" y="148" width="34" height="44" rx="5" fill="#10161E" stroke="#3A4656" stroke-width="1.5"/>
+          <text x="492" y="178" text-anchor="middle" font-family="Chakra Petch,sans-serif" font-size="13" font-weight="700" fill="#8A97A8" transform="rotate(-90 492 178)" letter-spacing="2">PARSTECH</text>
+        </g>
+      </svg>
+      <div class="ex-labels">
+        <span class="ex-l1">Havalandırmalı disk</span>
+        <span class="ex-l2">İç balata (K-01→K-04)</span>
+        <span class="ex-l3">Dış balata</span>
+        <span class="ex-l4">Tek pistonlu kaliper</span>
+      </div>
+      <button class="ex-toggle" id="exToggle" aria-pressed="false">Görünümü Aç / Kapat</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERFORMANCE ================= -->
+<section id="performans">
+  <div class="wrap">
+    <div class="eyebrow reveal">Test Verileri</div>
+    <h2 class="reveal">Rakamlar, pazarlama değildir.</h2>
+    <p class="lead reveal">Bağımsız test protokollerine göre, segment ortalaması (standart organik balata) ile karşılaştırma.</p>
+    <div class="perf reveal" id="perfBlock">
+      <div class="perf-row">
+        <div class="perf-head"><h4>Durma Mesafesi (100→0 km/s, kuru)</h4><span class="val">36 m · −%14</span></div>
+        <div class="bar-label">PARSTECH</div>
+        <div class="bars"><div class="bar pars"><i style="--w:72%"></i></div></div>
+        <div class="bar-label" style="margin-top:8px">SEGMENT ORT. — 42 m</div>
+        <div class="bars"><div class="bar std"><i style="--w:84%"></i></div></div>
+      </div>
+      <div class="perf-row">
+        <div class="perf-head"><h4>Isı Direnci (fading başlangıcı)</h4><span class="val">650 °C · +%44</span></div>
+        <div class="bar-label">PARSTECH</div>
+        <div class="bars"><div class="bar pars"><i style="--w:93%"></i></div></div>
+        <div class="bar-label" style="margin-top:8px">SEGMENT ORT. — 450 °C</div>
+        <div class="bars"><div class="bar std"><i style="--w:64%"></i></div></div>
+      </div>
+      <div class="perf-row">
+        <div class="perf-head"><h4>Servis Ömrü (karma kullanım)</h4><span class="val">60.000 km · +%50</span></div>
+        <div class="bar-label">PARSTECH</div>
+        <div class="bars"><div class="bar pars"><i style="--w:90%"></i></div></div>
+        <div class="bar-label" style="margin-top:8px">SEGMENT ORT. — 40.000 km</div>
+        <div class="bars"><div class="bar std"><i style="--w:60%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="iletisim">
+  <div class="wrap">
+    <div class="eyebrow reveal">İletişim</div>
+    <h2 class="reveal">Bayilik ve OEM teklifi alın.</h2>
+    <div class="contact-grid reveal" style="margin-top:36px">
+      <div>
+        <div class="field"><label for="cname">Ad / Firma</label><input id="cname" type="text" placeholder="Örn. Yılmaz Otomotiv"></div>
+        <div class="field"><label for="cmail">E-posta</label><input id="cmail" type="email" placeholder="ornek@firma.com"></div>
+        <div class="field"><label for="cmsg">Mesaj</label><textarea id="cmsg" rows="4" placeholder="İhtiyacınızı kısaca anlatın"></textarea></div>
+        <button class="btn btn-fill" type="button" style="border:none;cursor:pointer">Gönder</button>
+      </div>
+      <div class="contact-info">
+        <p>Distribütörlük, filo anlaşmaları ve OEM eşleştirme talepleriniz için teknik ekibimiz 24 saat içinde dönüş yapar.</p>
+        <div class="ci"><span>TEL</span> +90 (212) 000 00 00</div>
+        <div class="ci"><span>E-POSTA</span> info@parstech.com.tr</div>
+        <div class="ci"><span>ADRES</span> OSB Mah. Sanayi Cad. No:1, İstanbul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 PARSTECH — Fren Balata Sistemleri</span>
+    <span>ECE R90 · ISO 9001 · IATF 16949</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- scroll reveal + perf bars ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('inview'); io.unobserve(e.target);} });
+},{threshold:.18});
+document.querySelectorAll('.reveal,#perfBlock').forEach(el=>io.observe(el));
+
+/* ---------- exploded view: scroll trigger + toggle ---------- */
+const exStage = document.getElementById('exStage');
+const exToggle = document.getElementById('exToggle');
+const exIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>{ exStage.classList.add('exploded'); exToggle.setAttribute('aria-pressed','true'); }, 350);
+      exIO.unobserve(exStage);
+    }
+  });
+},{threshold:.45});
+exIO.observe(exStage);
+exToggle.addEventListener('click',()=>{
+  const on = exStage.classList.toggle('exploded');
+  exToggle.setAttribute('aria-pressed', on ? 'true':'false');
+});
+
+/* ---------- heat simulation ---------- */
+const brakeBtn = document.getElementById('brakeBtn');
+const heatLayer = document.getElementById('heatLayer');
+const tempVal = document.getElementById('tempVal');
+const heatNote = document.getElementById('heatNote');
+let heat = 0, braking = false, raf;
+
+function loop(){
+  heat += braking ? 0.012 : -0.006;
+  heat = Math.max(0, Math.min(1, heat));
+  heatLayer.setAttribute('opacity', (heat*0.92).toFixed(3));
+  const t = Math.round(38 + heat*612); /* 38°C -> 650°C */
+  tempVal.textContent = t;
+  if(t > 600){ heatNote.textContent = 'Limit bölgesi · Parstech μ hâlâ stabil'; heatNote.style.color = '#F43F5E'; }
+  else if(t > 300){ heatNote.textContent = 'Yüksek yük · μ 0.42 korunuyor'; heatNote.style.color = '#FACC15'; }
+  else { heatNote.textContent = braking ? 'Isınıyor…' : 'Sistem soğuk · μ stabil'; heatNote.style.color = ''; }
+  if(braking || heat > 0){ raf = requestAnimationFrame(loop); } else { raf = null; }
+}
+function startBrake(e){ e.preventDefault(); braking = true; brakeBtn.classList.add('active'); if(!raf) raf = requestAnimationFrame(loop); }
+function stopBrake(){ braking = false; brakeBtn.classList.remove('active'); }
+brakeBtn.addEventListener('pointerdown', startBrake);
+window.addEventListener('pointerup', stopBrake);
+brakeBtn.addEventListener('pointerleave', stopBrake);
+brakeBtn.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ startBrake(e); }});
+brakeBtn.addEventListener('keyup', e=>{ if(e.key===' '||e.key==='Enter'){ stopBrake(); }});
+</script>
+</body>
+</html>
