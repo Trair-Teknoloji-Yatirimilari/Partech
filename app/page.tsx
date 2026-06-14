@@ -1,5 +1,6 @@
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
+import Products from "@/components/sections/Products";
 import Layers from "@/components/sections/Layers";
 import HeatSim from "@/components/sections/HeatSim";
 import Exploded from "@/components/sections/Exploded";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Products />
       <Layers />
       <HeatSim />
       <Exploded />

@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
 const links = [
+  { href: "#urunler", label: "Ürünler", id: "urunler" },
   { href: "#katman", label: "Katman Teknolojisi", id: "katman" },
   { href: "#isi", label: "Isı Yönetimi", id: "isi" },
   { href: "#sistem", label: "Sistem", id: "sistem" },
@@ -79,8 +80,8 @@ export default function Navbar() {
           </motion.a>
 
           <div className="flex items-center gap-3 sm:gap-7">
-            <div className="hidden items-center gap-7 text-sm md:flex">
-              {links.slice(0, 4).map((l) => {
+            <div className="hidden items-center gap-5 text-sm lg:flex xl:gap-7">
+              {links.slice(0, 5).map((l) => {
                 const isActive = active === l.id;
                 return (
                   <a

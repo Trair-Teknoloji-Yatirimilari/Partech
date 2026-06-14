@@ -5,6 +5,7 @@ import { SECTIONS, useActiveSection } from "@/hooks/useActiveSection";
 
 const mobileLabels: Record<string, string> = {
   top: "Ana",
+  urunler: "Ürün",
   katman: "Katman",
   isi: "Isı",
   sistem: "Sistem",
@@ -40,7 +41,7 @@ export default function MobileBottomNav() {
                 />
               )}
               <span
-                className={`font-mono text-[10px] font-medium uppercase tracking-wide ${
+                className={`font-mono text-[9px] font-medium uppercase tracking-wide sm:text-[10px] ${
                   isActive ? "text-cyan" : "text-muted"
                 }`}
               >
